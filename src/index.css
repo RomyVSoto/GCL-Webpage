@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fade {
+  0%,
+  33.33%,
+  100% {
+    opacity: 0;
+  }
+  6.67%,
+  26.67% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  @apply bg-gray-100;
+}
+
+body.overflow-hidden {
+  overflow: hidden;
+  padding-right: 15px; /* Adjust for scrollbar width to prevent layout shift */
+}
+
+/* Add more spacing between sections */
+#about,
+#projects,
+#ceo {
+  @apply mb-12;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #about,
+  #projects {
+    @apply w-full;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.5s forwards;
+}
+
