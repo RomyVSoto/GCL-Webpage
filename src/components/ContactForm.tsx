@@ -19,6 +19,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
     language: language, // Añadir el idioma al estado inicial
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -27,6 +28,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     console.log('Form submitted:', formData);
 
     try {
@@ -49,6 +51,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
       }
     } catch (error) {
       console.error('Error al enviar el correo:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -169,9 +173,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600"
+                className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 flex items-center gap-2"
               >
                 {language === 'en' ? 'Submit' : 'Enviar'}
+                {isLoading && (
+                  <div className="flex justify-center items-center">
+                    <div className="loader"></div>
+                  </div>
+                )}
               </button>
             </div>
           </form>
