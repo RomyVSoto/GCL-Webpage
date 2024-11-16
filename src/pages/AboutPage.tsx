@@ -52,7 +52,7 @@ const AboutPage: React.FC = () => {
       <section className="py-20 bg-gray-100 mx-auto">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-16 text-center text-gray-800">{language === 'es' ? 'Certificaciones' : 'Certifications'}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 justify-items-center px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 md-lg:grid-cols-2 lg:grid-cols-4 gap-28 justify-items-center">
             <div className="bg-gradient-to-t hover:from-gray-200 transition-shadow duration-300 rounded-lg hover:shadow-lg p-4 flex flex-col items-center w-72 h-48">
               <BadgeCheck className="w-16 h-16 mb-4 text-blue-800" />
               <h3 className="text-2xl font-semibold mb-3 text-gray-800 text-center">SST</h3>
@@ -69,7 +69,7 @@ const AboutPage: React.FC = () => {
 
             <div className="bg-gradient-to-t hover:from-gray-200 transition-shadow duration-300 rounded-lg hover:shadow-lg p-4 flex flex-col items-center w-72 h-64">
               <BadgeCheck className="w-16 h-16 mb-4 text-blue-800" />
-              <h3 className="text-2xl font-semibold mb-3 text-gray-800 text-center">FSM-16</h3>
+              <h3 className="text-2xl font-semibold mb-3 text-gray-800 text-center">FSM-16S</h3>
               <p className="text-xl italic text-gray-700 text-center">Fujikura Splicing Certification</p>
             </div>
 
@@ -88,6 +88,18 @@ const AboutPage: React.FC = () => {
             <div className="bg-gradient-to-t hover:from-gray-200 transition-shadow duration-300 rounded-lg hover:shadow-lg p-4 flex flex-col items-center w-72 h-64">
               <BadgeCheck className="w-16 h-16 mb-4 text-blue-800" />
               <h3 className="text-2xl font-semibold mb-3 text-gray-800 text-center">3M</h3>
+              <p className="text-xl italic text-gray-700">Instalation Certification</p>
+            </div>
+
+            <div className="bg-gradient-to-t hover:from-gray-200 transition-shadow duration-300 rounded-lg hover:shadow-lg p-4 flex flex-col items-center w-72 h-64">
+              <BadgeCheck className="w-16 h-16 mb-4 text-blue-800" />
+              <h3 className="text-2xl font-semibold mb-3 text-gray-800 text-center">Confined Space Awareness</h3>
+              <p className="text-xl italic text-gray-700">Per OSHA 1910.146</p>
+            </div>
+
+            <div className="bg-gradient-to-t hover:from-gray-200 transition-shadow duration-300 rounded-lg hover:shadow-lg p-4 flex flex-col items-center w-72 h-64">
+              <BadgeCheck className="w-16 h-16 mb-4 text-blue-800" />
+              <h3 className="text-2xl font-semibold mb-3 text-gray-800 text-center"></h3>
               <p className="text-xl italic text-gray-700">Instalation Certification</p>
             </div>
           </div>

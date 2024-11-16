@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Cable, Ruler, ArrowUpDown, ReplaceAll, Hammer, Cctv } from 'lucide-react';
+import { Cable, Ruler, ArrowUpDown, ReplaceAll, Hammer, Cctv, Home, Network, LogOut } from 'lucide-react';
 import { LanguageContext } from '../contexts/LanguageContext';// Asegúrate de importar tu contexto de idioma
 
 import logo_wname from '../images/GCL-logo-wname.png'
@@ -20,6 +20,9 @@ const ServicesPage: React.FC = () => {
     { icon: ReplaceAll, title: language === 'es' ? 'Colocación de cables' : 'Cable Placement', description: language === 'es' ? 'Instalación de cableado de alta calidad en ductos, ductos internos, pozos y microductos.' : 'High-quality cabling installation of Duct/Cable Plowing, Inner Duct, Manholes and Micro Duct Placement.' },
     { icon: Hammer, title: language === 'es' ? 'Reparación y restauración' : 'Repair and Restoration', description: language === 'es' ? 'Reparación y restauración de cables Cat6, Cat6a, Cat5, Cat5e, Cat3.' : 'Repair and restoration of Cat6, Cat6a, Cat5, Cat5e, Cat3 cables.' },
     { icon: Cctv, title: language === 'es' ? 'Cámaras de seguridad' : 'Security Cameras', description: language === 'es' ? 'Instalación y pruebas de cámaras de seguridad de alta calidad para una conexión eficiente y segura.' : 'High-quality security cameras installation and testing for efficient and secure connectivity.' },
+    { icon: Home, title: language === 'es' ? 'Limpieza de centros de datos' : 'Data Center Cleaning', description: language === 'es' ? 'Limpieza de centros de datos para asegurar que los cables estén en óptimas condiciones.' : 'Data Center Cleaning to ensure cables are in optimal condition.' },
+    { icon: Network , title: language === 'es' ? 'Instalación de cables de fibra óptica' : 'Fiber Optic Cable Installation', description: language === 'es' ? 'Instalación de cables de fibra óptica para una conexión eficiente y segura.' : 'Fiber Optic Cable Installation for efficient and secure connectivity.' },
+    { icon: LogOut, title: language === 'es' ? 'Instalación al aire libre' : 'Outside Plant', description: language === 'es' ? 'Instalación profesional de cable para garantizar una conexión segura en entornos al aire libre.' : 'Professional cable installation to ensure secure connectivity in outdoor environments.' },
   ];
 
   return (
@@ -27,7 +30,7 @@ const ServicesPage: React.FC = () => {
       <div className="container mx-auto px-4 mt-12">
         <img src={logo_wname} alt="GCL" className="h-36 mx-auto mb-20" />
         <h1 className="text-4xl font-bold mb-24 text-center text-gray-800">{language === 'es' ? 'Servicios que ofrecemos a nuestros clientes' : 'Services that we provide to our clients'}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <service.icon className="w-12 h-12 text-blue-600 mb-4" />
