@@ -1,26 +1,26 @@
-require("dotenv").config(); // Cargar las variables de entorno
+require("dotenv").config();
 
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-const helmet = require('helmet'); // Importa helmet
+const helmet = require('helmet');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-const EMAIL_USER = "romyvs01@gmail.com";
-const EMAIL_PASS = "musa lfwq bynj cpjp";
 
 const corsOptions = {
-  origin: 'http://tu-dominio.com', // Cambia esto al dominio de tu frontend
-  optionsSuccessStatus: 200,
+  origin: 'https://www.globalclink.com',
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+  credentials: true
 };
 
-app.use(helmet()); // Usa helmet para mejorar la seguridad
+
+app.use(helmet());
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// Middleware de manejo de errores
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Algo salió mal!');
@@ -31,20 +31,20 @@ app.post("/send-email", async (req, res, next) => {
     const { firstName, lastName, phone, email, requestType, language } = req.body;
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
+      host: "smtpout.secureserver.net",
+      port: 465,
+      secure: true,
       auth: {
-        user: EMAIL_USER, // Usar variable de entorno
-        pass: EMAIL_PASS, // Usar variable de entorno
+        user: 'malmonte@globalclink.com',
+        pass: 'Monstro1025'
       },
     });
 
-    const COMPANY_EMAIL = email;
-    const CEO_EMAIL = email;
+    const COMPANY_EMAIL = "malmonte@globalclink.com";
+    const CEO_EMAIL = "malmonte1025@gmail.com";
 
-    // Correo de confirmación al usuario
     const userMailOptions = {
-      from: EMAIL_USER, // Usar variable de entorno
+      from: COMPANY_EMAIL, 
       to: email,
       subject:
         language === "en" ? "Request Confirmation" : "Confirmación de solicitud",
@@ -94,16 +94,16 @@ app.post("/send-email", async (req, res, next) => {
       attachments: [
         {
           filename: "GCL-logo-wname.png",
-          path: "../src/images/GCL-logo-wname.png", // Ruta al logo local
-          cid: "companyLogo", // Debe coincidir con el cid en el HTML
+          path: "../src/images/GCL-logo-wname.png",
+          cid: "companyLogo",
         },
       ],
     };
 
-    // Correo a la empresa y al personal del CEO
+
     const companyMailOptions = {
-      from: EMAIL_USER, // Usar variable de entorno
-      to: `${COMPANY_EMAIL}, ${CEO_EMAIL}`, // Usar variables de entorno
+      from: COMPANY_EMAIL, 
+      to: `${COMPANY_EMAIL}, ${CEO_EMAIL}`,
       subject: language === "en" ? "New Request" : "Nueva Solicitud",
       html: `
         <html lang="${language}">
@@ -165,17 +165,17 @@ app.post("/send-email", async (req, res, next) => {
       attachments: [
         {
           filename: "GCL-logo-wname.png",
-          path: "../src/images/GCL-logo-wname.png", // Ruta al logo local
-          cid: "companyLogo", // Debe coincidir con el cid en el HTML
+          path: "../src/images/GCL-logo-wname.png",
+          cid: "companyLogo",
         },
       ],
     };
 
-    await transporter.sendMail(userMailOptions); // Enviar correo al usuario
-    await transporter.sendMail(companyMailOptions); // Enviar correo a la empresa y al CEO
-    res.status(200).send("Correos enviados exitosamente");
+    await transporter.sendMail(userMailOptions);
+    await transporter.sendMail(companyMailOptions);
+    res.status(200).send("Correo enviado exitosamente");
   } catch (error) {
-    next(error); // Pasa el error al middleware de manejo de errores
+    next(error);
   }
 });
 

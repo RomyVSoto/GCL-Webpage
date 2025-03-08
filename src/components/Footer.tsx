@@ -43,12 +43,12 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-2">
               {language === 'en' ? 'Contact Us' : 'Contáctanos'}
             </h4>
-            <p className="text-gray-400">info@gcommlink.com</p>
+            <p className="text-gray-400">malmonte@globalclink.com</p>
             <p className="text-gray-400">+1 (929) 384-2944</p>
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-2 text-center text-gray-400">
-          <p>&copy; 2024 Global Comunnications Link. {language === 'en' ? 'All rights reserved.' : 'Todos los derechos reservados.'}</p>
+          <p>&copy; 2025 Global Comunnications Link. {language === 'en' ? 'All rights reserved.' : 'Todos los derechos reservados.'}</p>
         </div>
       </div>
     </footer>

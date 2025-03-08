@@ -28,7 +28,7 @@ const ServicesPage: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen py-20">
       <div className="container mx-auto px-4 mt-12">
-        <img src={logo_wname} alt="GCL" className="h-36 mx-auto mb-20" />
+        <img src={logo_wname} alt="GCL" className="h-40 sm:h-50 lg:h-60 w-auto mx-auto mb-20" />
         <h1 className="text-4xl font-bold mb-24 text-center text-gray-800">{language === 'es' ? 'Servicios que ofrecemos a nuestros clientes' : 'Services that we provide to our clients'}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (

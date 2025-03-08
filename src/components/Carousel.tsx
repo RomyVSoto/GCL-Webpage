@@ -35,10 +35,10 @@ const Carousel: React.FC = () => {
         />
       ))}
       <section className="hero py-20 mt-[-150px] absolute inset-0 flex items-center justify-center z-10">
-        <div className="container mx-auto px-4 text-center bg-transparent p-8 rounded-lg">
-          <img src={logo} alt="GCL" className="h-40 mx-auto mb-20" />
+        <div className="container mx-auto px-4 text-center bg-transparent p-8 rounded-lg flex flex-col items-center">
+          <img src={logo} alt="GCL" className="h-40 sm:h-50 lg:h-60 w-auto mx-auto mt-28 mb-12" />
           <h1 className="text-5xl font-bold mb-4 text-white [text-shadow:_0_7px_5px_black]">{language === 'en' ? 'Welcome to Global Communications Link' : 'Bienvenido a Global Communications Link'}</h1>
-          <p className="text-xl mb-14 text-white [text-shadow:_0_5px_5px_black]">{language === 'en' ? 'Connecting you globally' : 'Conectándote a nivel global'}</p>
+          <p className="text-xl mb-14 mx-auto text-white [text-shadow:_0_5px_5px_black]">{language === 'en' ? 'Connecting you globally' : 'Conectándote a nivel global'}</p>
           <button
             onClick={() => {
               document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });

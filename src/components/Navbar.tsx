@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
 
-import logo_wname from '../images/GCL-logo-wname.png'
+import logo from '../images/GCL-logo.png';
 
 interface NavbarProps {
   onContactClick: () => void;
@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
-            <img src={logo_wname} alt="GCL" className="h-12" />
+            <img src={logo} alt="GCL" className="h-12" />
           </a>
         </div>
         <div className="flex items-center md:hidden">

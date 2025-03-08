@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { LanguageContext } from '../contexts/LanguageContext';
 import SuccessNotification from './SuccessNotification';
+import Input from 'react-phone-number-input/input'
 
 import logo_wname from '../images/GCL-logo-wname.png';
 
@@ -16,7 +17,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
     phone: '',
     email: '',
     requestType: '',
-    language: language, // Añadir el idioma al estado inicial
+    language: language,
   });
   const [showSuccess, setShowSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,12 +33,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
     console.log('Form submitted:', formData);
 
     try {
-      const response = await fetch('http://localhost:5000/send-email', {
+      const response = await fetch("https://gcl-backend.onrender.com/send-email", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Asegúrate de que el idioma se envíe
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -57,8 +58,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto">
+      <div className="bg-white p-6 rounded-lg shadow-lg h-full max-h-screen max-w-md w-full mx-4 overflow-y-auto">
         <div className="relative">
           {showSuccess && (
             <SuccessNotification
@@ -68,7 +69,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
             />
           )}
           <form onSubmit={handleSubmit} className="mt-8">
-            <img src={logo_wname} alt="GCL" className="h-28 mx-auto mb-8" />
+            <img src={logo_wname} alt="GCL" className="h-28 sm:h-32 lg:h-40 w-auto mx-auto mb-8" />
             <h1 className="text-2xl font-bold mb-8 text-center text-gray-800">
               {language === 'en' ? 'Contact Us' : 'Contáctanos'}
             </h1>
@@ -104,12 +105,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
               <label htmlFor="phone" className="block text-gray-700 font-bold mb-2">
                 {language === 'en' ? 'Phone Number' : 'Número de Teléfono'}
               </label>
-              <input
+              <Input
                 type="tel"
                 id="phone"
                 name="phone"
+                country="US"
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={(value) => setFormData({ ...formData, phone: value || '' })}
                 className="w-full px-3 py-2 border rounded-lg"
                 required
               />
@@ -160,10 +162,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ onClose }) => {
                 </option>
               </select>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 flex justify-center">
               <p className="text-sm text-gray-400 mb-2 text-center max-w-sm">{language === 'en' ? 'A messsage with your request will be sent to our team.' : 'Un mensaje con su solicitud será enviado a nuestro equipo.'}</p>
             </div>
-            <div className="flex justify-end mt-20">
+            <div className="flex justify-end mt-10">
               <button
                 type="button"
                 onClick={onClose}

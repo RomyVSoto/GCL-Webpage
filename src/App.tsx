@@ -42,8 +42,10 @@ function App() {
           {showContactForm && (
             <ContactForm onClose={() => setShowContactForm(false)} />
           )}
+          {!showContactForm && (
+            <ScrollToTopButton/>
+          )}
         </div>
-        <ScrollToTopButton/>
       </LanguageProvider>
     </Router>
   );
